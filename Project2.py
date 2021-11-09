@@ -12,15 +12,17 @@ C3mean = 11
 C3std = 7
  
 def exploitOnly():
-    list = [random.normalvariate(C1mean, C1std), random.normalvariate(C2mean, C2std), random.normalvariate(C3mean, C3std)]
-    if max(list) == list[0]:
-        list.extend([random.normalvariate(C1mean,C1std) for i in range(297)])
-    if max(list) == list[1]:
-        list.extend([random.normalvariate(C2mean,C2std) for i in range(297)])
-    if max(list) == list[2]:
-        list.extend([random.normalvariate(C3mean,C3std) for i in range(297)])
-    #return list
-    return sum(list,0)
+    mylist = [random.normalvariate(C1mean, C1std), random.normalvariate(C2mean, C2std),
+              random.normalvariate(C3mean, C3std)]
+    if max(mylist) == mylist[0]:
+        mylist.extend([random.normalvariate(C1mean, C1std) for i in range(297)])
+    elif max(mylist) == mylist[1]:
+        mylist.extend([random.normalvariate(C2mean, C2std) for i in range(297)])
+    elif max(mylist) == mylist[2]:
+        mylist.extend([random.normalvariate(C3mean, C3std) for i in range(297)])
+    # return list
+    return sum(mylist, 0)
+
 
 print(exploitOnly())
 #print(len(exploitOnly()))
