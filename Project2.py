@@ -28,11 +28,12 @@ print(exploitOnly())
 #print(len(exploitOnly()))
 
 def exploreOnly():
-    list = [random.normalvariate(C1mean,C1std) for i in range(100)]
-    list.extend([random.normalvariate(C2mean,C2std) for i in range(100)])
-    list.extend([random.normalvariate(C3mean,C3std) for i in range(100)])
+    happiness1 = [random.normalvariate(C1mean, C1std) for i in range(100)]
+    happiness2 = [random.normalvariate(C2mean, C2std) for i in range(100)]
+    happiness3 = [random.normalvariate(C3mean, C3std) for i in range(100)]
+    joinedlists = happiness1 + happiness2 + happiness3
     #return list
-    return sum(list,0)
+    return sum(joinedlists)
 
 print(exploreOnly())
 
@@ -65,9 +66,9 @@ def Simulation(trials:int, x:int) -> str:
     exploitlist = [exploitOnly() for i in range(trials)]
     explorelist = [exploreOnly() for i in range(trials)]
     greedylist = [eGreedy(x) for i in range(trials)]
-    print(exploitlist)
-    print(explorelist)
-    print(greedylist)
+    #print(exploitlist)
+    #print(explorelist)
+    #print(greedylist)
     return("Exploit Best: {exploitbest} \nExploit Mean: {exploitmean} \nExploit Regret: {exploitregret} \nExplore Best: {explorebest} \nExplore Mean: {exploremean} \nExplore Regret: {exploreregret} \nGreedy Best: {greedybest} \nGreedy Mean: {greedymean} \nGreedy Regret: {greedyregret}"\
         .format(exploitbest = (42+(18*297)), exploitmean = statistics.mean(exploitlist), exploitregret = (42+(18*297)-statistics.mean(exploitlist)), \
             explorebest = (42*100), exploremean = statistics.mean(explorelist),exploreregret = (4200-statistics.mean(explorelist)), \
